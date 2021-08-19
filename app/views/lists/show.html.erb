@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Lists show</h1>
+      <%= @list.name %>
+      <%= link_to 'Add a movie to the list', new_list_bookmark_path(@list), class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>

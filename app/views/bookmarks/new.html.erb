@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%= simple_form_for [ @list, @bookmark ] do |f| %>
+        <%= f.association :movies %>
+        <%= f.input :comment %>
+        <%= f.submit %>
+      <% end %>
+
+     <%= f.association :movie, collection: Movie.all(order: 'name') %>
+    </div>
+  </div>
+</div>
