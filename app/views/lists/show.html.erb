@@ -8,7 +8,7 @@
   <div class="row">
       <% @list.bookmarks.each do |bookmark| %>
       <% @movie = Movie.find(bookmark[:movie_id]) %>
-      <div class="col-4">
+      <div class="col-6">
         <div class="card">
           <img src='<%= @movie.poster_url %>' alt="<%= @movie.title %>" class="card-img-top">
           <div class="card-body">
@@ -16,7 +16,7 @@
             <p><%= @movie.overview %></p>
             <p><%= @movie.rating %></p>
             <p><%= bookmark.comment %></p>
-            <p><%= link_to 'delete', bookmark_path(bookmark), method: :delete, data: { confirm: "Whoa! Are you sure?"}, class: 'text-danger' %></p>
+            <p><%= link_to 'remove from list', bookmark_path(bookmark), method: :delete, data: { confirm: "Whoa! Are you sure?"}, class: 'btn btn-outline-danger' %></p>
           </div>
         </div>
       </div>
@@ -28,9 +28,8 @@
         <%= simple_form_for [ @list, @bookmark ] do |f| %>
           <%= f.association :movie %>
           <%= f.input :comment %>
-          <%= f.submit %>
+          <%= f.submit "Add movie", class: 'btn btn-primary' %>
         <% end %>
       </div>
     </div>
-  </div>
 </div>
