@@ -1,12 +1,36 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h1>Lists show</h1>
-      <%= @list.name %>
-      <%= link_to 'Add a movie to the list', new_list_bookmark_path(@list), class: 'btn btn-primary' %>
-      <% @list.movies.each do |movie| %>
-      <%= movie.title %>
+      <h1><%= @list.name %></h1>
+      <h3>Movies</h3>
+    </div>
+  </div>
+  <div class="row">
+      <% @list.bookmarks.each do |bookmark| %>
+      <% @movie = Movie.find(bookmark[:movie_id]) %>
+      <div class="col-4">
+        <div class="card">
+          <img src='<%= @movie.poster_url %>' alt="<%= @movie.title %>" class="card-img-top">
+          <div class="card-body">
+            <h2 class='card-title'><%= @movie.title %></h2>
+            <p><%= @movie.overview %></p>
+            <p><%= @movie.rating %></p>
+            <p><%= bookmark.comment %></p>
+            <p><%= link_to 'delete', bookmark_path(bookmark), method: :delete, data: { confirm: "Whoa! Are you sure?"}, class: 'text-danger' %></p>
+          </div>
+        </div>
+      </div>
+    </div>
       <% end %>
+      <div class="row">
+      <div class="col">
+        <h3>Add a new movie to the list</h3>
+        <%= simple_form_for [ @list, @bookmark ] do |f| %>
+          <%= f.association :movie %>
+          <%= f.input :comment %>
+          <%= f.submit %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
