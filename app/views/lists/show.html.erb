@@ -15,7 +15,7 @@
           <img src='<%= @movie.poster_url %>' alt="<%= @movie.title %>" class="card-img-top card-img-small">
           <div class="card-body">
             <h3 class='card-title'><%= @movie.title %></h3>
-            <h4><%= @movie.rating %><%= icon('fa', 'star', class: 'gold-star') %></h4>
+            <h4><%= @movie.rating %> <%= icon('fa', 'star', class: 'gold-star') %></h4>
             <p><%= @movie.overview %></p>
             <p><%= icon('fa', 'quote-left') %></p>
             <p><%= bookmark.comment %></p>
