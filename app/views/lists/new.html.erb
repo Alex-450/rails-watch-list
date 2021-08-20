@@ -4,6 +4,7 @@
     <h1>Create a new list</h2>
       <%= simple_form_for(@list) do |f| %>
         <%= f.input :name %>
+        <%= f.input :photo, as: :file %>
         <%= f.submit %>
       <% end %>
     </div>
