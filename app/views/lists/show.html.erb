@@ -1,29 +1,31 @@
 <div class="container">
-  <div class="row">
+  <div class="row text-center">
     <div class="col">
       <h1><%= @list.name %></h1>
       <h3>Movies</h3>
     </div>
   </div>
-  <div class="row">
-      <% @list.bookmarks.each do |bookmark| %>
+  <div class="row justify-content-center">
+    <% @list.bookmarks.each do |bookmark| %>
       <% @movie = Movie.find(bookmark[:movie_id]) %>
-      <div class="col-6">
-        <div class="card">
-          <img src='<%= @movie.poster_url %>' alt="<%= @movie.title %>" class="card-img-top">
+      <div class="col-sm-12 col-lg-4 mb-4">
+        <div class="card text-center shadow">
+          <img src='<%= @movie.poster_url %>' alt="<%= @movie.title %>" class="card-img-top card-img-small">
           <div class="card-body">
-            <h2 class='card-title'><%= @movie.title %></h2>
+            <h3 class='card-title'><%= @movie.title %></h3>
+            <h4><%= @movie.rating %><%= icon('fa', 'star', class: 'gold-star') %></h4>
             <p><%= @movie.overview %></p>
-            <p><%= @movie.rating %></p>
+            <p><%= icon('fa', 'quote-left') %></p>
             <p><%= bookmark.comment %></p>
-            <p><%= link_to 'remove from list', bookmark_path(bookmark), method: :delete, data: { confirm: "Whoa! Are you sure?"}, class: 'btn btn-outline-danger' %></p>
+            <p><%= icon('fa', 'quote-right') %></p>
+            <p class="text-center"><%= link_to 'remove from list', bookmark_path(bookmark), method: :delete, data: { confirm: "Whoa! Are you sure?"}, class: 'btn btn-outline-danger' %></p>
           </div>
         </div>
-      </div>
     </div>
       <% end %>
-      <div class="row">
-      <div class="col">
+      </div>
+      <div class="row justify-content-center my-5">
+      <div class="col-12 border p-5 bg-dark text-white">
         <h3>Add a new movie to the list</h3>
         <%= simple_form_for [ @list, @bookmark ] do |f| %>
           <%= f.association :movie %>
