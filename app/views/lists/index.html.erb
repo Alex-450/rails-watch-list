@@ -16,7 +16,7 @@
       <h1>Movie lists</h1>
       <div class="row">
       <% @lists.each do |list| %>
-        <div class="col">
+        <div class="col-sm-12 col-md-6">
           <div class="card shadow mb-3">
             <div class="card-body">
             <% if list.photo.attached?%>
@@ -29,7 +29,7 @@
       <% end %>
       </div>
       <div class="row justify-content-center">
-        <div class="col-sm-6 my-5 border py-5">
+        <div class="col-sm-12 col-md-6 my-5 border py-5">
           <h3>Don't see anything you like? Create your own list!</h3>
           <%= link_to 'Create new list', new_list_path(), class: 'btn btn-primary' %>
         </div>
