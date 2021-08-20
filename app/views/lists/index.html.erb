@@ -1,11 +1,19 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h1>My lists</h1>
+<div class="container-fluid px-0">
+  <div class="jumbotron jumbotron-fluid landing-cover">
+    <div class="container text-center">
+    <div class="landing-title">
+      <h1>WatchList</h1>
+       <p>Explore movie lists or create your own...</p>
+    </div>
+    </div>
+  </div>
+  <div class="row mx-4">
+    <div class="col text-center">
+      <h1>Movie lists</h1>
       <div class="row">
       <% @lists.each do |list| %>
         <div class="col">
-          <div class="card">
+          <div class="card shadow">
             <div class="card-body">
             <% if list.photo.attached?%>
               <%= cl_image_tag list.photo.key, height: 300, width: 400, crop: :fill, class: 'card-img-top' %>
@@ -16,7 +24,12 @@
         </div>
       <% end %>
       </div>
-      <%= link_to 'create new list', new_list_path(), class: 'btn btn-primary' %>
+      <div class="row justify-content-center">
+        <div class="col-sm-6 my-5 border py-5">
+          <h3>Don't see anything you like? Create your own list!</h3>
+          <%= link_to 'Create new list', new_list_path(), class: 'btn btn-primary' %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

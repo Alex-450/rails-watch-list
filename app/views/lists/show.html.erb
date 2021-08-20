@@ -1,11 +1,13 @@
-<div class="container">
-  <div class="row text-center">
-    <div class="col">
-      <h1><%= @list.name %></h1>
-      <h3>Movies</h3>
-    </div>
-  </div>
-  <div class="row justify-content-center">
+<div class="container-fluid px-0">
+      <div class="jumbotron jumbotron-fluid text-center text-align-center list-cover" style="background-image: url(<%= cl_image_path @list.photo.key %>">
+        <h1><%= @list.name %></h1>
+      </div>
+      <div class="row text-center">
+        <div class="col mb-3">
+          <h3>Movies</h3>
+        </div>
+      </div>
+  <div class="row justify-content-center px-4">
     <% @list.bookmarks.each do |bookmark| %>
       <% @movie = Movie.find(bookmark[:movie_id]) %>
       <div class="col-sm-12 col-lg-4 mb-4">
@@ -24,8 +26,8 @@
     </div>
       <% end %>
       </div>
-      <div class="row justify-content-center my-5">
-      <div class="col-12 border p-5 bg-dark text-white">
+      <div class="row justify-content-center my-5 px-5">
+      <div class="col-sm-12 col-md-6 border p-5 bg-dark text-white">
         <h3>Add a new movie to the list</h3>
         <%= simple_form_for [ @list, @bookmark ] do |f| %>
           <%= f.association :movie %>
