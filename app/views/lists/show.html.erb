@@ -1,16 +1,14 @@
 <div class="container-fluid px-0">
-      <div class="jumbotron jumbotron-fluid text-center text-align-center list-cover" style="background-image: url(<%= cl_image_path @list.photo.key %>">
-        <h1><%= @list.name %></h1>
-      </div>
-      <div class="row text-center">
-        <div class="col mb-3">
-          <h3>Movies</h3>
-        </div>
-      </div>
-  <div class="row justify-content-center px-4">
+  <div class="jumbotron jumbotron-fluid d-flex justify-content-center align-items-center text-center list-cover" style="background-image: url(<%= cl_image_path @list.photo.key %>">
+    <div class="container">
+      <h1 class="display-4"><%= @list.name %></h1>
+    </div>
+  </div>
+  <h3 class="text-center mb-3">Movies</h3>
+  <div class="row justify-content-center mx-3">
     <% @list.bookmarks.each do |bookmark| %>
       <% @movie = Movie.find(bookmark[:movie_id]) %>
-      <div class="col-sm-12 col-lg-4 mb-4">
+      <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
         <div class="card text-center shadow">
           <img src='<%= @movie.poster_url %>' alt="<%= @movie.title %>" class="card-img-top card-img-small">
           <div class="card-body">
@@ -26,7 +24,7 @@
     </div>
       <% end %>
       </div>
-      <div class="row justify-content-center my-5 px-5">
+      <div class="row justify-content-center my-5 mx-5">
       <div class="col-sm-12 col-md-6 border p-5 bg-dark text-white">
         <h3>Add a new movie to the list</h3>
         <%= simple_form_for [ @list, @bookmark ] do |f| %>
